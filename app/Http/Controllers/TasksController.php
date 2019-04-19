@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -13,9 +14,16 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $tasks = Task::orderBy('due_date', 'asc')->paginate(5);
+        // $tasks = Task::orderBy('due_date', 'asc')->paginate(5);
+        $tasks = Task::where('user', '=', Auth::user()->email)->paginate(5);
 
         return view('tasks.index')->with('tasks', $tasks);
     }
@@ -52,6 +60,7 @@ class TasksController extends Controller
         $task->name = $request->name;
         $task->description = $request->description;
         $task->due_date = $request->due_date;
+        $task->user = Auth::user()->email;
 
         // Save the task
         $task->save();
@@ -111,6 +120,7 @@ class TasksController extends Controller
         $task->name = $request->name;
         $task->description = $request->description;
         $task->due_date = $request->due_date;
+        $task->user = Auth::user()->email;
 
         // Save the task
         $task->save();
