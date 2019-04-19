@@ -15,8 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::resource('task', 'TasksController');
 
-Auth::routes();
+Route::get('mytask/{task}/share', 'ShareController@share')->name('shared.share');
+Route::post('mytask/{task}/shareTo', 'ShareController@shareTo')->name('shared.shareTo');
+Route::get('myshared', 'ShareController@showShared')->name('shared.showShared');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
