@@ -13,8 +13,12 @@ class Task extends Model
 
 	public function getDates() {
 		return ['created_at', 'updated_at', 'due_date'];
-	}
-	
+    }
+
+    public function task() {
+        $this->hasMany('\App\Models\Shared');
+    }
+
     // Define the table
     protected $table = 'tasks';
 }

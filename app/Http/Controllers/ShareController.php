@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use DB;
 use App\Models\Task;
 use App\Models\Shared;
 use Illuminate\Http\Request;
@@ -48,8 +49,12 @@ class ShareController extends Controller
     }
 
     public function showShared() {
-        $shared = Shared::where('email', '=', Auth::user()->email)->paginate(5);
 
-        return view('shared.showShared');
+        $sharedTasks = DB::table('shared')->join('tasks', 'shared.task_id', '=', 'tasks.id')->where('email','=', Auth::user()->email)->paginate();
+        // dump($sharedTasks);
+
+        // $tasks = Task::
+
+        return view('shared.showShared')->with('sharedTasks', $sharedTasks);
     }
 }
