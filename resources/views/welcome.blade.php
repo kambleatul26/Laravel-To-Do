@@ -68,6 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
+                        <a class="nav-link" href="{{ route('task.index') }}">My Tasks</a>
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
