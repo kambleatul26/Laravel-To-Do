@@ -33,6 +33,12 @@
 		<div class="col-sm-6 text-center">
 			{{ $sharedTasks->links() }}
 		</div>
-	</div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-sm-4">
+            <a href="{{ route('task.index') }}" class="btn btn-block btn-secondary">Go Back</a>
+        </div>
+    </div>
 
 @endsection

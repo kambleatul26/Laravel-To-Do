@@ -12,8 +12,10 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background: url("https://cdn.pixabay.com/photo/2017/10/31/19/05/web-design-2906159_960_720.jpg");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                color: white;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -68,24 +70,24 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a class="nav-link" href="{{ route('task.index') }}">My Tasks</a>
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a style="color: white; font-size: 1.5rem;" class="nav-link" href="{{ route('task.index') }}">Tasks</a>
+                        <a style="color: white; font-size: 1.5rem;" href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a style="color: white" href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a style="color: white" href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
                 </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                <strong class="title m-b-md">
+                    MY TASKS
+                </strong>
 
-                <div class="links">
+                {{-- <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
@@ -93,7 +95,7 @@
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </body>

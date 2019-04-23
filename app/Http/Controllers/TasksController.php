@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use DB;
 use App\Models\Task;
 use App\Models\Shared;
 use Illuminate\Http\Request;
@@ -142,6 +143,8 @@ class TasksController extends Controller
     public function destroy($id)
     {
         //
+        Shared::where('task_id', $id)->delete();
+        // $shared = Shared::find($id)->all()->delete();
         $task = Task::find($id);
 
         $task->delete();
